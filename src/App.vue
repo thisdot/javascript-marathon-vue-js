@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <div v-if="posts.length === 0">Loading..</div>
+    <div v-if="posts.length === 0">Loading...</div>
     <div v-else v-for="post in posts" :key="post.id">
       <Post v-bind:title="post.title" :description="post.description" />
     </div>
@@ -11,7 +11,8 @@
 <script>
 import Post from "./components/Post.vue";
 import Log from "./mixins/log.js";
-import fakeApiCall from "./data/fakeApiCall";
+
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "App",
@@ -19,13 +20,20 @@ export default {
   components: {
     Post
   },
-  data() {
-    return {
-      posts: []
-    };
+  // data() {
+  //   return {
+  //     posts: []
+  //   };
+  // },
+  computed: {
+    ...mapState(["posts"])
   },
-  async created() {
-    this.posts = await fakeApiCall.fetchData();
+  methods: {
+    ...mapActions(["fetchPosts"])
+  },
+  async mounted() {
+    this.fetchPosts();
+    //this.posts = await fakeApiCall.fetchData();
   }
 };
 </script>
