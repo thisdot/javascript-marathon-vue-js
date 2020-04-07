@@ -20,11 +20,6 @@ export default {
   components: {
     Post
   },
-  // data() {
-  //   return {
-  //     posts: []
-  //   };
-  // },
   computed: {
     ...mapState(["posts"])
   },
@@ -33,7 +28,6 @@ export default {
   },
   async mounted() {
     this.fetchPosts();
-    //this.posts = await fakeApiCall.fetchData();
   }
 };
 </script>
