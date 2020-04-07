@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="post">
     <h2 v-text="title"></h2>
+
     <p v-if="!fullText">{{ shortText }}</p>
     <p v-else>{{ description }}</p>
 
@@ -48,8 +49,24 @@ export default {
 };
 </script>
 
-<style lang="scss">
-h2 {
-  color: red;
+<style lang="scss" scoped>
+.post {
+  width: 600px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px lightgray;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px 10px;
+
+  button {
+    padding: 10px 15px;
+    background-color: lightsalmon;
+    border: 2px solid burlywood;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 </style>
