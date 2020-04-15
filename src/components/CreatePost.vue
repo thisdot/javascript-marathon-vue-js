@@ -9,7 +9,7 @@
       >Description:
       <textarea v-model="post.description"></textarea>
     </label>
-    <button @click="addPost">Submit</button>
+    <button @click="addPost(post)">Submit</button>
   </div>
 </template>
 
