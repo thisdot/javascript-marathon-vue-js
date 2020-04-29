@@ -1,12 +1,15 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <div v-if="posts.length === 0">Loading..</div>
-    <div v-else v-for="post in posts" :key="post.id">
-      <Post v-bind:title="post.title" :description="post.description" />
+  <amplify-authenticator>
+    <div id="app">
+      <img alt="Vue logo" src="./assets/logo.png" />
+      <div v-if="posts.length === 0">Loading..</div>
+      <div v-else v-for="post in posts" :key="post.id">
+        <Post v-bind:title="post.title" :description="post.description" />
+      </div>
+      <Create-post />
+      <amplify-sign-out button-text="Get me out of this app"></amplify-sign-out>
     </div>
-    <Create-post />
-  </div>
+  </amplify-authenticator>
 </template>
 
 <script>

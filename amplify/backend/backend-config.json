@@ -6,5 +6,23 @@
 			"dependsOn": [],
 			"customAuth": false
 		}
+	},
+	"api": {
+		"1hourtolearnvue": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "js-marathon-test",
+							"apiKeyExpirationDays": 7
+						}
+					}
+				}
+			}
+		}
 	}
 }
