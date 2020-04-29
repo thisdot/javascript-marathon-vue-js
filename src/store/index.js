@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import fakeApiCall from "../data/fakeApiCall";
+import { API, graphqlOperation } from "aws-amplify";
+import { listTodos } from "../graphql/queries";
 
 Vue.use(Vuex);
 
@@ -21,8 +22,12 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchPosts({ commit }) {
-      const posts = await fakeApiCall.fetchData();
-      commit("SET_POSTS", posts);
+      const {
+        data: {
+          listTodos: { items }
+        }
+      } = await API.graphql(graphqlOperation(listTodos));
+      commit("SET_POSTS", items);
     },
     addPost({ commit }, payload) {
       commit("ADD_POSTS", payload);
