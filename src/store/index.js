@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { API, graphqlOperation } from "aws-amplify";
 import { listTodos } from "../graphql/queries";
+import { createTodo } from "../graphql/mutations";
 
 Vue.use(Vuex);
 
@@ -29,7 +30,8 @@ export default new Vuex.Store({
       } = await API.graphql(graphqlOperation(listTodos));
       commit("SET_POSTS", items);
     },
-    addPost({ commit }, payload) {
+    async addPost({ commit }, payload) {
+      await API.graphql(graphqlOperation(createTodo, { input: payload }));
       commit("ADD_POSTS", payload);
     }
   }
