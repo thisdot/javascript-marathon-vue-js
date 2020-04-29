@@ -1,17 +1,15 @@
 <template>
   <div class="post">
-    <h2 v-text="title"></h2>
+    <h2 data-testID="title" v-text="title">a</h2>
 
-    <p v-if="!fullText">{{ shortText }}</p>
-    <p v-else>{{ description }}</p>
+    <p data-testID="shortText" v-if="!fullText">{{ shortText }}</p>
+    <p data-testId="description" v-else>{{ description }}</p>
 
     <button @click="toggleText">{{ buttonText }}</button>
   </div>
 </template>
 
 <script>
-import Log from "../mixins/log.js";
-
 export default {
   props: {
     title: String,
@@ -24,7 +22,6 @@ export default {
       }
     }
   },
-  mixins: [Log],
   data() {
     return {
       fullText: false
@@ -42,7 +39,6 @@ export default {
   },
   methods: {
     toggleText() {
-      this.logEvent();
       this.fullText = !this.fullText;
     }
   }

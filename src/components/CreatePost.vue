@@ -3,11 +3,11 @@
     <h2>Create your blog post</h2>
     <label
       >Title
-      <input v-model="post.title" type="text" />
+      <input data-testId="title" v-model="post.title" type="text" />
     </label>
     <label
       >Description:
-      <textarea v-model="post.description"></textarea>
+      <textarea data-testId="description" v-model="post.description"></textarea>
     </label>
     <button @click="addPost(post)">Submit</button>
   </div>
@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       post: {
-        title: "ciao",
-        description: ""
+        title: "default title",
+        description: "default description"
       }
     };
   },
