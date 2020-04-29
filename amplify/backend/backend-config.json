@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"1hourtolearnvue1cb7a189": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
